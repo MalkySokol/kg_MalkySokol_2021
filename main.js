@@ -1,4 +1,4 @@
-function convertToString(num){
+function convertToString(num, end){
 	//convert each number to a string representing the number
 	str = num;
   	let string = "";
@@ -36,13 +36,18 @@ function convertToString(num){
 		  break;
 		}
 	}
-	process.stdout.write(string);
+	if (!end) 
+       		string += ",";
+  	process.stdout.write(string);
 }
 
 function parseNums() {
 	array = process.argv.slice(2); 
 	for (let index = 0; index < array.length; index++) {
-		convertToString(array[index]);
+		if (index != array.length-1)
+          		status = false;
+     		else status = true;
+    		convertToString(array[index], status);
   	}
 }
 
